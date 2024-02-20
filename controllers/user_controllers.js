@@ -19,7 +19,7 @@ const getAllUsers = async (req, res) => {
 
 const signup = async (req, res) => {
   let existingUser;
-  const { name, email, phone, password } = req.body;
+  const { name, email,password } = req.body;
   try {
     existingUser = await User.findOne({ email });
 
@@ -33,7 +33,6 @@ const signup = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      phone,
     });
     user.save();
 
