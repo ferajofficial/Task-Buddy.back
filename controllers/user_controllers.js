@@ -36,11 +36,11 @@ const signup = async (req, res) => {
     });
     user.save();
 
-    console.log(`User ${user.name} registered successfully`);
-    res.status(201).json({ message: "User registered successfully", user });
+    console.log(`User ${user.name} Signedup successfully`);
+    res.status(201).json({ message: "User signedup successfully", user });
   } catch (err) {
     console.log(err.message);
-    res.status(500).json({ message: "Could not register user." });
+    res.status(500).json({ message: "Could not signup user." });
   }
 };
 
