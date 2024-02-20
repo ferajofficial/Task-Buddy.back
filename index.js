@@ -1,8 +1,13 @@
 //* Initiate the server //
 const mongoose = require("mongoose");
-const router = require("./routes/user_routes");
+const userRouter = require("./routes/user_routes"); // changed variable name
+const taskRouter = require("./routes/task_routes");
+
+
 const app = require("./app");
 require("./routes")(app);
+app.use("./routes/user_routes", userRouter);
+app.use("./routes/task_routes", taskRouter);
 
 const port = 5500;
 
