@@ -25,7 +25,7 @@ const signup = async (req, res) => {
 
     if (existingUser) {
       return res.status(400).json({
-        message: "User already exist! Login instead",
+        message: "User already exist! Signin instead",
       });
     }
     const hashedPassword = bcrypt.hashSync(password);
@@ -46,7 +46,7 @@ const signup = async (req, res) => {
 
 //* __________________________________`Login`___________________________________//
 
-const login = async (req, res) => {
+const signin = async (req, res) => {
   let existingUser;
   const { email, password } = req.body;
   try {
@@ -65,12 +65,12 @@ const login = async (req, res) => {
     }
     const existingUserId = existingUser.id;
     // console.log(existingUserId);
-    console.log(`User: ${existingUser.name} logged in successfully`);
+    console.log(`User: ${existingUser.name} signed in successfully`);
     res
       .status(200)
       .json({
         status: true,
-        message: "User logged in Successfully",
+        message: "User signed in Successfully",
         id: existingUserId,
       });
   } catch (err) {
@@ -83,5 +83,5 @@ const login = async (req, res) => {
 module.exports = {
   getAllUsers,
   signup,
-  login,
+  signin,
 };
