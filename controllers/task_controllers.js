@@ -14,10 +14,31 @@ const getAllTasks = async (req, res) => {
     res.status(500).json({ message: "Error" });
   }
 };
+ //*----------`Create Tasks`----------//
+
+ const createTasks = async (req, res) => {
+  let task;
+  const { title, description, priority, startDate, dueDate, emails } = req.body;
+  try {
+    task = new Task({
+      title,
+      description,
+      priority,
+      startDate,
+      dueDate,
+      emails,
+    });
+    await task.save();
+    console.log(`Task : ${task.title} created successfully 🚀`);
+    res.status(201).json({ message: "Task created successfully", task });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({ message: "Could not create task." });
+  }
+};
 
 //*----------`exports`----------//
 module.exports = {
   getAllTasks,
-//   signup,
-//   signin,
+  createTasks,
 };

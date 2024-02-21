@@ -6,5 +6,4 @@ const task = require("./task_routes");
 module.exports = (app) => {
   app.use("/admin", user);
   app.use("/admin", task);
-  // app.use("/student", student);
 };

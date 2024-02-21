@@ -34,6 +34,12 @@ const taskSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
+  status: {
+    // The status of the task, can be "todo", "in-progress", or "done"
+    type: String,
+    enum: ["pending", "in-progress", "completed"],
+    default: "pending",
+  },
 });
 
 // Export the model
