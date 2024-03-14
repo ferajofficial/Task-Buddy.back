@@ -32,7 +32,7 @@ const taskSchema = new mongoose.Schema({
   emails: {
     // The list of emails of the assignees of the task
     type: [String],
-    required: true,
+
   },
   status: {
     // The status of the task, can be "todo", "in-progress", or "done"

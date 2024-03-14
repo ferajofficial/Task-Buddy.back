@@ -38,8 +38,8 @@ const signup = async (req, res) => {
 
     console.log(`User ${user.name} Signedup successfully`);
     res.status(201).json({ message: "User signedup successfully", user });
-  } catch (err) {
-    console.log(err.message);
+  } catch (error) {
+    console.log(error.message);
     res.status(500).json({ message: "Could not signup user." });
   }
 };

@@ -1,29 +1,25 @@
 //* Initiate the server //
 const mongoose = require("mongoose");
-const userRouter = require("./routes/user_routes"); // changed variable name
+const userRouter = require("./routes/user_routes");
 const taskRouter = require("./routes/task_routes");
+const dotenv = require("dotenv").config();
 
-
+//* Import the app //
 const app = require("./app");
 require("./routes")(app);
 app.use("./routes/user_routes", userRouter);
 app.use("./routes/task_routes", taskRouter);
 
-const port = 5500;
-
-app.get("/");
-
+//* Connect to the database //
+const MONGO_URL = process.env.DB_CONNECT;
 mongoose
-  .connect(
-    "mongodb+srv://mdferaj143:1SIY3189XUEh6fQl@cluster0.fmdxzhu.mongodb.net/TaskBuddy?retryWrites=true&w=majority"
-  )
-
-
+  .connect(MONGO_URL)
   .then(() => console.log("Connected to Database ✨"))
   .catch((err) => console.log(err));
 
+//* Start the server //
 app.get("/");
-
+const port = 5500;
 app.listen(port, () => {
   console.log("Listening to the port 5500");
 });
